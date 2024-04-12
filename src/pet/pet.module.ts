@@ -8,6 +8,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import GetPetByIdUseCase from './usecases/get.pet.by.id.usecase';
 import UpdatePetByIdUseCase from './usecases/update.pet.usecase';
 import DeletePetByIdUsecase from './usecases/delete.pet.by.id.usecase';
+import AppTokens from 'src/app.tokens';
+import FileService from 'src/file.service';
+import UpdatePetPhotoByIdUseCase from './usecases/update.pet.photo.by.id.usecase';
 
 @Module({
   controllers: [PetController],
@@ -33,6 +36,14 @@ import DeletePetByIdUsecase from './usecases/delete.pet.by.id.usecase';
       provide: PetTokens.deletePetByIdUseCase,
       useClass: DeletePetByIdUsecase
     },
+    {
+      provide: PetTokens.updatePetPhotoByIdUseCase,
+      useClass: UpdatePetPhotoByIdUseCase
+    },
+    {
+      provide: AppTokens.fileService,
+      useClass: FileService
+    }
   ]
 })
 export class PetModule {}
