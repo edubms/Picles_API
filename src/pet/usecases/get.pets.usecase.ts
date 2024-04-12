@@ -1,6 +1,6 @@
 import { iUseCase } from "src/domain/iusecase.interface";
 import GetPetsUseCaseInput from "./dtos/get.pets.usecase.input";
-import GetPetsUseCaseOutput from "../dtos/get pets.usecase.output";
+import GetPetsUseCaseOutput from "../dtos/get.pets.usecase.output";
 import { Inject, Injectable } from "@nestjs/common";
 import { inherits } from "util";
 import PetTokens from "../pet.tokens";

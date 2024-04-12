@@ -16,7 +16,7 @@ import multerConfig from 'src/config/multer.config';
 import UpdatePetPhotoByIdUseCaseInput from './usecases/dtos/update.pet.photo.by.id.usecase.input';
 import UpdatePetPhotoByIdUseCaseOutput from './usecases/dtos/update.pet.photo.by.id.usecase.output';
 import GetPetsUseCaseInput from './usecases/dtos/get.pets.usecase.input';
-import GetPetsUseCaseOutput from './dtos/get pets.usecase.output';
+import GetPetsUseCaseOutput from './dtos/get.pets.usecase.output';
 
 @Controller('pet')
 export class PetController {
