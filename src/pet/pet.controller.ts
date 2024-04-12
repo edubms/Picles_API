@@ -11,13 +11,12 @@ import UpdatePetByIdUseCaseOutput from './usecases/dtos/update.pet.usecase.outpu
 import UpdatePetByIdUseCaseInput from './usecases/dtos/update.pet.usecase.input';
 import DeletePetByIdUsecaseInput from './usecases/dtos/delete.pet.by.id.usecase.input';
 import DeletePetByIdUsecaseOutput from './usecases/dtos/delete.pet.by.id.usecase.output';
-import UpdatePetPhotoByIdControllerInput from './dtos/update.pet.photo.controller.input';
 import { FileInterceptor } from '@nestjs/platform-express';
 import multerConfig from 'src/config/multer.config';
 import UpdatePetPhotoByIdUseCaseInput from './usecases/dtos/update.pet.photo.by.id.usecase.input';
 import UpdatePetPhotoByIdUseCaseOutput from './usecases/dtos/update.pet.photo.by.id.usecase.output';
-import { INTERCEPTORS_METADATA } from '@nestjs/common/constants';
 import GetPetsUseCaseInput from './usecases/dtos/get.pets.usecase.input';
+import GetPetsUseCaseOutput from './dtos/get pets.usecase.output';
 
 @Controller('pet')
 export class PetController {
@@ -31,6 +30,8 @@ export class PetController {
     private readonly deletePetByIdUseCase: iUseCase<DeletePetByIdUsecaseInput,DeletePetByIdUsecaseOutput>
     @Inject(PetTokens.updatePetPhotoByIdUseCase)
     private readonly updatePetPhotoByIdUseCase: iUseCase<UpdatePetPhotoByIdUseCaseInput,UpdatePetPhotoByIdUseCaseOutput>
+    @Inject(PetTokens.getPetsUseCase)
+    private readonly getPetsUseCase: iUseCase<GetPetsUseCaseInput,GetPetsUseCaseOutput>
 
     @Get()
     async getPets(
@@ -49,6 +50,7 @@ export class PetController {
             page: !!page ? parseInt(page): FIRST_PAGE, 
             itemsPerPage: !!itemsPerPage ? parseInt(itemsPerPage): DEFAULT_ITEMS_PER_PAGE, 
         })
+        return await this.getPetsUseCase.run(useCaseInput)
     }
 
     @Get(':id')
