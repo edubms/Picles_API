@@ -35,7 +35,7 @@ export default class GetPetByIdUseCase implements iUseCase<GetPetByIdUseCaseInpu
             size: pet.size,
             gender:pet.gender,
             bio:pet.bio,
-            photo: null,
+            photo: petPhoto,
             createdAt: pet.createdAt,
             updatedAt: pet.updatedAt
         })

@@ -15,7 +15,7 @@ export class Pet {
     gender:string
     @Prop({ required:true})
     bio:string
-    @Prop({ required:true})
+    @Prop({ required:false})
     photo:string
     @Prop({ required:true})
     createdAt: Date
